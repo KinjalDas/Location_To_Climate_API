@@ -6,17 +6,17 @@ For ex:<br/>
 
 1.If you just want today's weather metrics with place name: <br/>
 
-from LocationToCliamteAPI import main<br/>
+from LocationToWeatherAPI import main<br/>
 main.driver("Place-Name")<br/>
 
 2.If you just want the current month's forecast with place name: <br/>
 
-from LocationToCliamteAPI import main<br/>
+from LocationToWeatherAPI import main<br/>
 main.driver("Place-Name",type_of_forecast="2"<option for monthly data>)<br/>
 
 3.If you just want some date's weather prediction with place name: <br/>
 
-from LocationToCliamteAPI import main<br/>
+from LocationToWeatherAPI import main<br/>
 main.driver("Place-Name",date="date string in yyyy-mm-dd format")<br/>
 
 package is installable as "pip install LocationToCliamteAPI"<br/>
@@ -25,7 +25,7 @@ If no/wrong keyword arguments given, it may result in wrong output<br/>
 
 Included BROWSABLE API can be started with :<br/>
 
-from LocationToCliamteAPI import api_server<br/>
+from LocationToWeatherAPI import api_server<br/>
 api_server.start()<br/>
 
 Here the home page, i.e, "/" contains the instructions for accessing the different endpoints.<br/>
