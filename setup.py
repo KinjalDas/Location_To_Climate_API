@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.4",
     author="Kinjal Das",
     author_email="kinjal.das86@gmail.com",
-    description="Package for Generating weather data from place name and/or date",
+    description="Package for Generating weather data from place name and/or date with included browsable API",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/KinjalDas/Location_To_Climate_API",

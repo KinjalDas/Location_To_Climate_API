@@ -12,11 +12,12 @@ def driver(place,date=None,type_of_forecast=1):
 	print("Found Place has latitude : " +str(lat) +" and logitude : " +str(lon))
 	date_entry = date
 	if date==None:
-		forecast = get_climate_data_type(lat,lon,
+		forecast,day,night = get_climate_data_type(lat,lon,
 		selection=int(type_of_forecast))
 	else:
-		forecast = get_climate_data_type(lat,lon,
+		forecast,day,night = get_climate_data_type(lat,lon,
 		date=date)
+	return forecast,day,night,received_locs["location"]["address"][0]
 
 if __name__ == '__main__':
 	if len(sys.argv)==1 or len(sys.argv)>3:

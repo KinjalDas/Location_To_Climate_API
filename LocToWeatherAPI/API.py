@@ -88,10 +88,10 @@ def get_monthly_forecast(lat=0,lon=0,count=None,date=None):
 				print("=================================")
 		else:
 			print("========== "+str(date)+" Metrics ========== ")
-			count = 0
+			count1 = 0
 			for i in range(len(ret_list)):
 				if str(date) in str(ret_list[i]["validDate"]):
-					count = count+1
+					count1 = count1+1
 					print("=================================")
 					print("Overall : ")
 					print(ret_list[i])
@@ -100,9 +100,9 @@ def get_monthly_forecast(lat=0,lon=0,count=None,date=None):
 					print("Night Metrics : ")
 					print(night_list[i])
 					print("=================================")
-			if(count==0):
+			if(count1==0):
 				print("No Data Found for : "+str(date))
-		return r.json()["vt1dailyForecast"]
+		return ret_list,day_list,night_list
 	else:
 		return None
 
@@ -110,7 +110,7 @@ def get_climate_data_type(lat,lon,selection=0,date=datetime.today().strftime('%Y
 	if selection==0:
 		return get_monthly_forecast(lat,lon,date=date)
 	elif selection==1:
-		return  get_daily_forecast(lat,lon)
+		return  get_daily_forecast(lat,lon),None,None
 	elif selection==3:
 		return get_monthly_forecast(lat,lon,count=5)
 	elif selection==4:
