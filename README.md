@@ -4,17 +4,31 @@ This API is used for converting location name as a string to the respective loca
 
 For ex:
 
-If you just want today's weather metrics with place name: LocationToCliamteAPI.main.driver("Place-Name")
+1.If you just want today's weather metrics with place name: 
 
-If you just want the current month's with place name: LocationToCliamteAPI.main.driver("Place-Name",type_of_forecast="2"<option for monthly data>)
+from LocationToCliamteAPI import main
+main.driver("Place-Name")
 
-If you just want some date's weather prediction with place name: LocationToCliamteAPI.main.driver("Place-Name",date="date string in yyyy-mm-dd format")
+2.If you just want the current month's with place name: 
+
+from LocationToCliamteAPI import main
+main.driver("Place-Name",type_of_forecast="2"<option for monthly data>)
+
+3.If you just want some date's weather prediction with place name: 
+
+from LocationToCliamteAPI import main
+main.driver("Place-Name",date="date string in yyyy-mm-dd format")
 
 package is installable as "pip install LocationToCliamteAPI"
 
 If no/wrong keyword arguments given, it may result in wrong output
 
-Included BROWSABLE API can be started with LocationToCliamteAPI.api_server.start(), where the home page, i.e, "/" contains the instructions for accessing the different endpoints.
+Included BROWSABLE API can be started with :
+
+from LocationToCliamteAPI import api_server
+api_server.start()
+
+Here the home page, i.e, "/" contains the instructions for accessing the different endpoints.
 
 For ex:
 
