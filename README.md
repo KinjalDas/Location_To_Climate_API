@@ -4,11 +4,11 @@ This API is used for converting location name as a string to the respective loca
 
 For ex:
 
-If you just want today's weather metrics with place name: LocationToCliamteAPI.main.driver("<Place-Name>")
+If you just want today's weather metrics with place name: LocationToCliamteAPI.main.driver("Place-Name")
 
-If you just want the current month's with place name: LocationToCliamteAPI.main.driver("<Place-Name>",type_of_forecast="2"<option for monthly data>)
+If you just want the current month's with place name: LocationToCliamteAPI.main.driver("Place-Name",type_of_forecast="2"<option for monthly data>)
 
-If you just want some date's weather prediction with place name: LocationToCliamteAPI.main.driver("<Place-Name>",date="date string in yyyy-mm-dd format")
+If you just want some date's weather prediction with place name: LocationToCliamteAPI.main.driver("Place-Name",date="date string in yyyy-mm-dd format")
 
 package is installable as "pip install LocationToCliamteAPI"
 
