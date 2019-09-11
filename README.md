@@ -37,3 +37,5 @@ For ex:<br/>
 "/Name of Place/3/" - 5 days forecast for place<br/>
 "/Name of Place/4/" - 10 days forecast for place<br/>
 "/Name of Place/Date/" - Date's forecast for place<br/>
+
+The package has been uploaded to pypi, viewable at : "https://pypi.org/project/LocToWeatherAPI/
