@@ -1,4 +1,4 @@
-from API import get_lat_long,selected_place_lat_long,get_climate_data_type
+from LocToWeatherAPI.API import get_lat_long,selected_place_lat_long,get_climate_data_type
 from datetime import datetime
 import sys
 
