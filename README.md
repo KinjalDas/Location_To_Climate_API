@@ -19,7 +19,7 @@ main.driver("Place-Name",type_of_forecast="2"<option for monthly data>)<br/>
 from LocToWeatherAPI import main<br/>
 main.driver("Place-Name",date="date string in yyyy-mm-dd format")<br/>
 
-package is installable as "pip install LocationToCliamteAPI"<br/>
+package is installable as "pip install LocToWeatherAPI"<br/>
 
 If no/wrong keyword arguments given, it may result in wrong output<br/>
 
