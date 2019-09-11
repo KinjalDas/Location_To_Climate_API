@@ -18,8 +18,8 @@ Included BROWSABLE API can be started with LocationToCliamteAPI.api_server.start
 
 For ex:
 
-"/<Name of Place>/" or "/<Name of Place>/1/" - Today's weather for Place
-"/<Name of Place>/2/" - Monthly forecast for place
-"/<Name of Place>/3/" - 5 days forecast for place.
-"/<Name of Place>/4/" - 10 days forecast for place
-"/<Name of Place>/<Date>/" - <Date>'s forecast for place
+"/Name of Place/" or "/Name of Place/1/" - Today's weather for Place
+"/Name of Place/2/" - Monthly forecast for place
+"/Name of Place/3/" - 5 days forecast for place.
+"/Name of Place/4/" - 10 days forecast for place
+"/Name of Place/Date/" - Date's forecast for place
