@@ -1,6 +1,6 @@
 # Location_To_Climate_API
 
-This API is used for converting location name as a string to the respective locality's weather data. Import "main.driver(place,date="<date in string format>",type_of_forecast="<Any one from 1 to 4 in string format>") from package "LocationToCliamteAPI". You can pass ANY ONE OF the keyword arguments - Date in "YYYY-MM-DD" format/ forecast type required ('1' for today {Default Selection}, '2' for monthly,'3' for 5-day and '4' for 10-day). We are relying on APIs used by weather.com internally for extracting the respective data.
+This API is used for converting location name as a string to the respective locality's weather data. Import module main from package LocationToWeatherAPI. Call main.driver(place,date="<date in string format>",type_of_forecast="<Any one from 1 to 4 in string format>"). You can pass ANY ONE OF the keyword arguments - Date in "YYYY-MM-DD" format/ forecast type required ('1' for today {Default Selection}, '2' for monthly,'3' for 5-day and '4' for 10-day). We are relying on APIs used by weather.com internally for extracting the respective data.
 
 For ex:<br/>
 
