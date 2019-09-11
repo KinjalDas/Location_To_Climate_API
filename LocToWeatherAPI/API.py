@@ -106,9 +106,6 @@ def get_monthly_forecast(lat=0,lon=0,count=None,date=None):
 	else:
 		return None
 
-def get_climate_data_date(lat=0,lon=0,date=datetime.today().strftime('%Y-%m-%d')):
-	i,j,k = get_daily_forecast(lat,lon)
-
 def get_climate_data_type(lat,lon,selection=0,date=datetime.today().strftime('%Y-%m-%d')):
 	if selection==0:
 		return get_monthly_forecast(lat,lon,date=date)

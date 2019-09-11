@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="LocToWeatherAPI",
-    version="0.0.3",
+    version="0.0.4",
     author="Kinjal Das",
     author_email="kinjal.das86@gmail.com",
     description="Package for Generating weather data from place name and/or date",

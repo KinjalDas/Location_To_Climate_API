@@ -15,7 +15,7 @@ def driver(place,date=None,type_of_forecast=1):
 		forecast = get_climate_data_type(lat,lon,
 		selection=int(type_of_forecast))
 	else:
-		get_climate_data_type(lat,lon,
+		forecast = get_climate_data_type(lat,lon,
 		date=date)
 
 if __name__ == '__main__':
