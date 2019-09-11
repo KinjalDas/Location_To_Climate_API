@@ -1,6 +1,5 @@
 import requests
-import pprint
-import datetime
+from datetime import datetime
 
 def get_lat_long(place=None):
 	query_url = (
@@ -21,10 +20,10 @@ def get_lat_long(place=None):
 		return None
 
 def selected_place_lat_long(loc_json,selection=0):
-	print("Your selected Place is : " 
+	print("Found Place is : "
 		+ loc_json["location"]["address"][selection])
-	return(loc_json["location"]["latitude"][i]
-		,loc_json["location"]["longitude"][i])
+	return(loc_json["location"]["latitude"][selection]
+		,loc_json["location"]["longitude"][selection])
 
 def get_daily_forecast(lat=0,lon=0):
 	query_url = (
@@ -42,37 +41,82 @@ def get_daily_forecast(lat=0,lon=0):
 		.format(query_url))
 	r = requests.get(query_url)
 	if r.status_code == 200:
-		return r.json()
+		print("========== Daily Metrics ========== ")
+		print(r.json()["vt1observation"])
+		return r.json()["vt1observation"]
 	else:
 		return None
 
-if __name__ == '__main__':
-	place = input("Enter Name of Place : ")
-	received_locs = get_lat_long(place)
-	num_received_locs = len(received_locs["location"]["address"])
-	for i in range(num_received_locs):
-		print(str(i+1)+"."
-			+received_locs["location"]["address"][i])
-	sel_loc = input("Select Your Preference : ")
-	if ((sel_loc==None) or (sel_loc.isdigit()==False)):
-		print("Incorrect input format! Selection set to 1")
-		sel_loc = 0
+def get_monthly_forecast(lat=0,lon=0,count=None,date=None):
+	query_url = (
+		"https://api.weather.com/v2/turbo/vt1dailyForecast"
+		"?apiKey=d522aa97197fd864d36b418f39ebb323"
+		"&format=json"
+		"&geocode="
+		+str(lat)+
+		"%2C"
+		+str(lon)+
+		"&language=en-IN"
+		"&units=m"
+		)
+	print(("Get request at API endpoint : {0}")
+		.format(query_url))
+	r = requests.get(query_url)
+	if r.status_code == 200:
+		ret_dict = r.json()["vt1dailyForecast"]
+		del ret_dict['day']
+		del ret_dict['night']
+		day_dict = r.json()["vt1dailyForecast"]["day"]
+		night_dict = r.json()["vt1dailyForecast"]["night"]
+		ret_list = [dict(zip(ret_dict,t)) for t in zip(*ret_dict.values())]
+		day_list = [dict(zip(day_dict,t)) for t in zip(*day_dict.values())]
+		night_list = [dict(zip(night_dict,t)) for t in zip(*night_dict.values())]
+		if date==None:
+			if count == None:
+				count = len(ret_list)
+				print("========== Monthly Metrics ========== ")
+			else:
+				print("========== {0}-Day Metrics ========== ".format(count))
+			for i in range(count):
+				print("=================================")
+				print("Overall : ")
+				print(ret_list[i])
+				print("Day Metrics : ")
+				print(day_list[i])
+				print("Night Metrics : ")
+				print(night_list[i])
+				print("=================================")
+		else:
+			print("========== "+str(date)+" Metrics ========== ")
+			count = 0
+			for i in range(len(ret_list)):
+				if str(date) in str(ret_list[i]["validDate"]):
+					count = count+1
+					print("=================================")
+					print("Overall : ")
+					print(ret_list[i])
+					print("Day Metrics : ")
+					print(day_list[i])
+					print("Night Metrics : ")
+					print(night_list[i])
+					print("=================================")
+			if(count==0):
+				print("No Data Found for : "+str(date))
+		return r.json()["vt1dailyForecast"]
 	else:
-		sel_loc = int(sel_loc)-1
-	lat,lon=selected_place_lat_long(received_locs,sel_loc)
-	print("Selected Place has latitude : "
-		+str(lat)
-		+" and logitude : "
-		+str(lon))
-	date_entry = input('Enter a date in YYYY-MM-DD format : ')
-	year, month, day = map(int, date_entry.split('-'))
-	date1 = datetime.date(year, month, day)
-	print("Types of forecast : ")
-	print("1. Daily")
-	print("2. Monthly")
-	type_of_forecast=input("Enter type of forecast : ")
-	if type_of_forecast == "1":
-		forecast = get_daily_forecast(lat,lon)
-	pprint.pprint(forecast)
+		return None
 
+def get_climate_data_date(lat=0,lon=0,date=datetime.today().strftime('%Y-%m-%d')):
+	i,j,k = get_daily_forecast(lat,lon)
 
+def get_climate_data_type(lat,lon,selection=0,date=datetime.today().strftime('%Y-%m-%d')):
+	if selection==0:
+		return get_monthly_forecast(lat,lon,date=date)
+	elif selection==1:
+		return  get_daily_forecast(lat,lon)
+	elif selection==3:
+		return get_monthly_forecast(lat,lon,count=5)
+	elif selection==4:
+		return get_monthly_forecast(lat,lon,count=10)
+	else:
+		return get_monthly_forecast(lat,lon)
