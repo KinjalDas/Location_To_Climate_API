@@ -9,7 +9,7 @@ For ex:<br/>
 from LocationToCliamteAPI import main<br/>
 main.driver("Place-Name")<br/>
 
-2.If you just want the current month's with place name: <br/>
+2.If you just want the current month's forecast with place name: <br/>
 
 from LocationToCliamteAPI import main<br/>
 main.driver("Place-Name",type_of_forecast="2"<option for monthly data>)<br/>
